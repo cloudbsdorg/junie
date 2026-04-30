@@ -62,9 +62,10 @@ OS=$(uname -s)
 ARCH=$(uname -m)
 
 case "$OS" in
-  Linux)  OS_NAME="linux" ;;
-  Darwin) OS_NAME="macos" ;;
-  *)      log_error "Unsupported OS: $OS"; exit 1 ;;
+  Linux)    OS_NAME="linux" ;;
+  Darwin)   OS_NAME="macos" ;;
+  FreeBSD)  OS_NAME="freebsd" ;;
+  *)        log_error "Unsupported OS: $OS"; exit 1 ;;
 esac
 
 case "$ARCH" in
@@ -448,6 +449,7 @@ add_to_path() {
       if [[ "$OS_NAME" == "macos" ]]; then
         profile_files="$HOME/.bash_profile $HOME/.profile"
       else
+        # Linux and FreeBSD typically use non-login shells
         profile_files="$HOME/.bashrc $HOME/.profile"
       fi
       ;;
