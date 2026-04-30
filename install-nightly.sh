@@ -64,7 +64,7 @@ ARCH=$(uname -m)
 case "$OS" in
   Linux)    OS_NAME="linux" ;;
   Darwin)   OS_NAME="macos" ;;
-  FreeBSD)  OS_NAME="freebsd" ;;
+  FreeBSD)  OS_NAME="linux" ;;  # FreeBSD uses Linux binaries via Linuxulator
   *)        log_error "Unsupported OS: $OS"; exit 1 ;;
 esac
 
